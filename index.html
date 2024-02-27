@@ -28,6 +28,8 @@
         <div>
             <img src="doc/bt_configuração.bmp" alt="Configuração">
         </div>
+
+        <form action="login.php" method="POST">
         <div class="form-group">
             <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
         </div>
@@ -41,6 +43,7 @@
         <div class="form-group">
             <input type="submit" value="Logar">
         </div>
+    </form>
         <div>
             <a href="#">Esqueci a senha</a><br>
             <a href="page/cadastro.html">Cadastro</a>
