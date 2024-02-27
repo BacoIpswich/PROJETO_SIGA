@@ -13,7 +13,7 @@ function verificarLogin() {
   // Verifica se os dados de login correspondem aos dados armazenados
   if (cpf === data.cpf && senha === data.senha) {
     // Redireciona para outra página
-    window.location.href = "../index.html";
+    window.location.href = "page/painel.html";
   } else {
     // Mostra um alerta
     alert('CPF ou senha incorretos.');
