@@ -29,7 +29,7 @@
             <img src="doc/bt_configuração.bmp" alt="Configuração">
         </div>
 
-        <form action="login.php" method="POST">
+        <form action="php/login.php" method="POST">
         <div class="form-group">
             <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
         </div>
@@ -49,13 +49,17 @@
 
     </form>
         <div>
+            <br>
+            <hr>
             <a href="#">Esqueci a senha</a><br>
             <a href="page/cadastro.html">Cadastro</a>
         </div>
     </div>
-    <!-- Seu conteúdo vai aqui -->
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Seu JavaScript -->
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -17,22 +17,29 @@ $opt = [
 ];
 $pdo = new PDO($dsn, $user, $pass, $opt);
 
-// Recupera os dados do formulário
-$cpf = $_POST['cpf'];
-$senha = $_POST['senha'];
+// Verifica se o CPF e a senha foram postados
+if (isset($_POST['cpf']) && isset($_POST['senha'])) {
+    // Recupera os dados do formulário
+    $cpf = $_POST['cpf'];
+    $senha = $_POST['senha'];
 
-// Prepara a consulta SQL
-$stmt = $pdo->prepare("SELECT * FROM users WHERE cpf = ? AND senha = ?");
-$stmt->execute([$cpf, $senha]);
+    // Prepara a consulta SQL
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE cpf = ? AND senha = ?");
+    $stmt->execute([$cpf, $senha]);
 
-// Verifica se a consulta retornou algum resultado
-if ($stmt->rowCount() > 0) {
-    // Usuário autenticado, redireciona para a página do painel
-    header('Location: page/painel.html');
-} else {
-    // Autenticação falhou, armazena a mensagem de erro na sessão
-    $_SESSION['erro'] = "CPF ou senha incorretos.";
-    // Redireciona de volta para a página de login
-    header('Location: index.html');
+    // Verifica se a consulta retornou algum resultado
+    if ($stmt->rowCount() > 0) {
+        // Usuário autenticado, define a variável de sessão
+        $_SESSION['logado'] = true;
+        // Redireciona para a página do painel
+        header('Location: ../page/painel.php');
+        exit;
+    } else {
+        // Autenticação falhou, armazena a mensagem de erro na sessão
+        $_SESSION['erro'] = "CPF ou senha incorretos.";
+        // Redireciona de volta para a página de login
+        header('Location: ../index.php');
+        exit;
+    }
 }
 ?>

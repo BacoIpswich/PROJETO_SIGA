@@ -1,26 +1,3 @@
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    var cpf = document.getElementById('cpf').value;
-    var senha = document.getElementById('senha').value;
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "login.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function() {
-        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            if (this.responseText === 'success') {
-                window.location.href = "page/painel.html";
-            } else {
-                alert('CPF ou senha incorretos.');
-            }
-        }
-    }
-
-    xhr.send("cpf=" + cpf + "&senha=" + senha);
-});
-
 function formatarCPF(el) {
     var cpf = el.value;
     cpf = cpf.replace(/\D/g, ""); // Remove tudo o que não é dígito
@@ -62,27 +39,12 @@ function validarSenha(el) {
     var senha = el.value;
     var mensagemErroSenha = document.getElementById('mensagemErroSenha');
 
-    if (senha.length < 6) {
-        mensagemErroSenha.textContent = 'A senha deve ter pelo menos 6 caracteres.';
+    if (senha.length === 0) {
+        mensagemErroSenha.textContent = 'Por favor, preencha a senha.';
         return false;
     }
 
-    if (!/[a-zA-Z]/.test(senha)) {
-        mensagemErroSenha.textContent = 'A senha deve conter pelo menos uma letra.';
-        return false;
-    }
-
-    if (!/[0-9]/.test(senha)) {
-        mensagemErroSenha.textContent = 'A senha deve conter pelo menos um número.';
-        return false;
-    }
-
-    if (!/[!@#$%^&*]/.test(senha)) {
-        mensagemErroSenha.textContent = 'A senha deve conter pelo menos um caractere especial.';
-        return false;
-    }
-
-    // Se a senha passar em todas as verificações, limpa a mensagem de erro
+    // Se a senha passar na verificação, limpa a mensagem de erro
     mensagemErroSenha.textContent = '';
     return true;
 }
