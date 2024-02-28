@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <header>
-            <a href="page/painel.html">
+            <a href="page/painel.php">
             <img src="doc/CAPA_FIOCRUZ.png" alt="Capa ini" class="responsive-img">
             </a>
         </header>

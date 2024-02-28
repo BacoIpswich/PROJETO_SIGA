@@ -34,20 +34,17 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Painel</h1>
             <hr>
         </div>
-        <div class="row">
-            <div class="col">
-                <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
-                <a href="gerenciamento.php"><button>Gerenciamento</button></a>
-                <a href="info_chefia.php"><button>Info da Chefia</button></a>
-                <a href="relatorios.php"><button>Relatórios</button></a>
-            </div>
-            <div class="col">
-                <a href="perfil.php"><button>Perfil</button></a>
-                <a href="configuracoes.php"><button>Configurações</button></a>
-                <a href="suporte.php"><button>Suporte</button></a>
-                <a href="../logout.php"><button>Sair</button></a>
-            </div>
-        </div>
+        <div class="menu-lateral">
+    <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
+    <a href="gerenciamento.php"><button>Gerenciamento</button></a>
+    <a href="info_chefia.php"><button>Informativos</button></a>
+    <a href="relatorios.php"><button>Relatórios</button></a>
+    <a href="perfil.php"><button>Perfil</button></a>
+    <a href="configuracoes.php"><button>Configurações</button></a>
+    <a href="suporte.php"><button>Suporte</button></a>
+    <a href="../php/logout.php"><button>Sair</button></a>
+</div>
+
     </div>
 
     <!-- JavaScript -->

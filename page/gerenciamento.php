@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <header>
-            <a href="painel.html">
+            <a href="painel.php">
             <img src="../doc/CAPA_FIOCRUZ.png" alt="Capa ini" class="responsive-img">
             </a>
         </header>
@@ -25,6 +25,16 @@
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Gerenciamento</h1>
             <hr>
         </div>
+        <div class="menu-lateral">
+    <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
+    <a href="gerenciamento.php"><button>Gerenciamento</button></a>
+    <a href="info_chefia.php"><button>Informativos</button></a>
+    <a href="relatorios.php"><button>Relatórios</button></a>
+    <a href="perfil.php"><button>Perfil</button></a>
+    <a href="configuracoes.php"><button>Configurações</button></a>
+    <a href="suporte.php"><button>Suporte</button></a>
+    <a href="../php/logout.php"><button>Sair</button></a>
+</div>
 
     </div>
     <!-- Seu conteúdo vai aqui -->
