@@ -1,9 +1,12 @@
 <?php
+// Inicia a sessão
+session_start();
+
 // Conexão com o banco de dados
 $host = 'localhost';
-$db   = 'nome_do_banco_de_dados';
-$user = 'nome_do_usuario';
-$pass = 'senha';
+$db   = 'login'; // Altere para o nome do seu banco de dados
+$user = 'root'; // Usuário padrão para MySQL
+$pass = ''; // Sem senha
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -15,19 +18,21 @@ $opt = [
 $pdo = new PDO($dsn, $user, $pass, $opt);
 
 // Recupera os dados do formulário
-$username = $_POST['username'];
-$password = $_POST['password'];
+$cpf = $_POST['cpf'];
+$senha = $_POST['senha'];
 
 // Prepara a consulta SQL
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-$stmt->execute([$username, $password]);
+$stmt = $pdo->prepare("SELECT * FROM users WHERE cpf = ? AND senha = ?");
+$stmt->execute([$cpf, $senha]);
 
 // Verifica se a consulta retornou algum resultado
 if ($stmt->rowCount() > 0) {
     // Usuário autenticado, redireciona para a página do painel
     header('Location: page/painel.html');
 } else {
-    // Autenticação falhou, mostra uma mensagem de erro
-    echo "Usuário ou senha incorretos.";
+    // Autenticação falhou, armazena a mensagem de erro na sessão
+    $_SESSION['erro'] = "CPF ou senha incorretos.";
+    // Redireciona de volta para a página de login
+    header('Location: index.html');
 }
 ?>
