@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- Titulo -->
+    <title>SIGA | Cadastro</title>
+
+    <!-- Inclua o seu arquivo CSS local aqui -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="painel.html">
+            <img src="../doc/CAPA_FIOCRUZ.png" alt="Capa ini" class="responsive-img">
+            </a>
+        </header>
+        <div>
+            <hr>
+                <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Recuperação de Senha</h1>
+            <hr>
+        </div>
+        <div>
+            <p>Por favor, insira seu CPF para recuperar sua senha:</p>
+            <form id="recuperacaoSenhaForm">
+                <div class="form-group">
+                    <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="" style="width: 20%;" oninput="verificarCamposPreenchidos();">
+                </div>
+                <div class="form-group">
+                <input type="submit" value="Recuperar Senha"></input>
+                </div>
+            </form>
+            <div>
+                <br>
+                <hr>
+                <a href="../index.php">Voltar</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+    
+</body>
+</html>

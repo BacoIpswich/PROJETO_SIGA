@@ -63,7 +63,7 @@ if (isset($_SESSION['erro'])) {
         <div>
             <br>
             <hr>
-            <a href="#">Esqueci a senha</a><br>
+            <a href="page/recuperacao_senha.html">Esqueci a senha</a><br>
             <a href="page/cadastro.html">Cadastro</a>
         </div>
     </div>
