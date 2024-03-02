@@ -32,10 +32,11 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
         <div>
             <hr>
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Ajuda</h1>
+                <p class="login" style="color: #1e7e31;text-align:left">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>   |   <a href="../php/logout.php">Sair</a></p>
             <hr>
         </div>
         <div class="menu-lateral">
-            <p class="login">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?></p>
+                <a href="painel.php"><button>Painel</button></a>
                 <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
                 <a href="gerenciamento.php"><button>Gerenciamento</button></a>
                 <a href="info_chefia.php"><button>Informativos</button></a>
@@ -43,7 +44,6 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
                 <a href="perfil.php"><button>Perfil</button></a>
                 <a href="configuracoes.php"><button>Configurações</button></a>
                 <a href="suporte.php"><button>Suporte</button></a>
-                <a href="../php/logout.php"><button>Sair</button></a>
         </div>
 
     </div>
