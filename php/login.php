@@ -46,7 +46,7 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
         exit;
     } else {
         // Autenticação falhou, armazena a mensagem de erro na sessão
-        $_SESSION['erro'] = "CPF ou senha incorretos.";
+        $_SESSION['erro'] = "Usuário ou Senha incorretos.";
 
         // Redireciona de volta para a página de login
         header('Location: ../index.php');

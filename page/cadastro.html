@@ -26,8 +26,32 @@
             <hr>
         </div>
 
+        <!-- Formulário de cadastro -->
+        <form action="cadastrar.php" method="post">
+            <div class="form-group">
+            <input type="text" id="cpf" name="cpf" placeholder="CPF" oninput="formatarCPF(this)" onblur="validarCPF(this)"><br>
+            </div>
+            <div class="form-group">
+            <input type="text" id="nome" name="nome" placeholder="Nome"><br>
+            <input type="password" id="senha" name="senha" placeholder="Senha" oninput="validarSenha(this)"><br>
+            </div>
+            <div class="form-group">
+            <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirmar Senha" oninput="validarSenha(this)"><br>
+            </div>
+            <div id="regrasSenha">
+                <p id="regraTamanho" class="regraVermelha">Mínimo de 6 caracteres</p>
+                <p id="regraMaiuscula" class="regraVermelha">Uma letra maiúscula</p>
+                <p id="regraMinuscula" class="regraVermelha">Uma letra minúscula</p>
+                <p id="regraEspecial" class="regraVermelha">Um caractere especial</p>
+                <p id="regraNumero" class="regraVermelha">Um número</p>
+                <p id="regraIgual" class="regraVermelha">Senhas iguais</p>
+            </div> 
+            <div class="form-group">          
+            <input type="submit" value="Salvar">
+            </div>
+        </form>
+
     </div>
-    <!-- Seu conteúdo vai aqui -->
 
     <!-- JavaScript -->
     <script src="../js/script.js"></script>

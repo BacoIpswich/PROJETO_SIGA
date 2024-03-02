@@ -85,12 +85,20 @@ body {
     background-color: #1e7e34; /* Cor de fundo quando o mouse passa por cima */
     }
 
-p.login { 
+.login { 
     margin: 0 !important;
     color: #1e7e34 !important;
     }
     
-p.erro-login {
+.erro-login {
     color: red;
+    }
+
+.regraVermelha {
+        color: red;
+    }
+    
+.regraVerde {
+        color: green;
     }
     
