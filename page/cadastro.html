@@ -25,38 +25,58 @@
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Cadastro</h1>
             <hr>
         </div>
-
-        <!-- Formulário de cadastro -->
-        <form action="../php/cadastrar.php" method="post">
-            <div class="form-group">
-                <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
-            </div>
+        
+<!-- Formulário de cadastro -->
+<form action="../php/cadastrar.php" method="post" style="display: flex; flex-direction: column; align-items: center;">
+    <div class="form-group" style="width: 50%;">
+        <input type="text" id="nome" name="nome" placeholder="Nome" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
+        <div class="form-group" style="flex: 1;">
+            <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+        </div>
+        <div class="form-group" style="flex: 1;">
+            <input type="email" id="email" name="email" placeholder="E-mail" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
+        <div class="form-group" style="flex: 1; position: relative;">
+            <input type="password" placeholder="Senha" id="senha" name="senha" onkeydown="validarSenhaCadastro();" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+            <button type="button" onclick="mostrarSenha('senha')" style="position: absolute; right: 0; top: 0;"><img src="../oc/fechar-o-olho.png" alt="Mostrar senha"></button>
+        </div>
+        <div class="form-group" style="flex: 1; position: relative;">
+            <input type="password" placeholder="Confirmar Senha" id="confirmaSenha" name="confirmaSenha" onkeydown="validarSenhaCadastro();" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+            <button type="button" onclick="mostrarSenha('confirmaSenha')" style="position: absolute; right: 0; top: 0;"><img src="../oc/fechar-o-olho.png" alt="Mostrar senha"></button>
+        </div>
+    </div>
     
-            <p id="mensagemErroCPF" class="regraVermelha"></p>
+    
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
+        <ul style="padding-left: 20px; text-align: left; flex: 1;">
+            <li><p id="regraTamanho" class="regraVermelha">Mínimo de 6 caracteres</p></li>
+            <li><p id="regraLetra" class="regraVermelha">Mínimo de 1 letra</p></li>
+            <li><p id="regraEspecial" class="regraVermelha">Mínimo de 1 caractere especial</p></li>
+            <li><p id="regraNumero" class="regraVermelha">Mínimo de 1 número</p></li>
+        </ul>
+        <div class="form-group" style="flex: 1;">   
+        <ul style="padding-left: 20px; text-align: left; flex: 1;">
+            <li><p id="regraIgual" class="regraVermelha">Senhas compatíveis</p></li>
+        </ul>       
+            <input type="submit" id="botaoSalvar" value="Salvar" style="width: 100%;">
+        </div>
+    </div>
+</form>
 
-            <div class="form-group">
-            <input type="text" id="nome" name="nome" placeholder="Nome"><br>
-            </div>
 
-            <div class="form-group">
-                <input type="password" placeholder="Senha" id="senha" name="senha" onkeyup="validarSenhaCadastro();" required="">
-                <p id="mensagemErroSenha" class="regraVermelha"></p>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Confirmar Senha" id="confirmaSenha" name="confirmaSenha" onkeyup="validarSenhaCadastro();" required="">
-            </div>
-            <div id="regrasSenha">
-                <p id="regraTamanho" class="regraVermelha">Mínimo de 6 caracteres</p>
-                <p id="regraMaiuscula" class="regraVermelha">Uma letra maiúscula</p>
-                <p id="regraMinuscula" class="regraVermelha">Uma letra minúscula</p>
-                <p id="regraEspecial" class="regraVermelha">Um caractere especial</p>
-                <p id="regraNumero" class="regraVermelha">Um número</p>
-                <p id="regraIgual" class="regraVermelha">Senhas iguais</p>
-            </div>
-            <div class="form-group">          
-                <input type="submit" id="botaoSalvar" value="Salvar" disabled>
-            </div>
-        </form>
+
+
+<div>
+    <br>
+    <hr>
+    <a href="../index.php">Voltar</a>
+</div>
+
 
     </div>
 
