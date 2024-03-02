@@ -102,52 +102,16 @@ function validarSenhaCadastro() {
         }
     }
 
-    function validarSenhaCadastro() {
-        var nome = document.getElementById('nome').value;
-        var cpf = document.getElementById('cpf').value;
-        var email = document.getElementById('email').value;
-        var senha = document.getElementById('senha').value;
-        var confirmaSenha = document.getElementById('confirmaSenha').value;
-        var botaoSalvar = document.getElementById('botaoSalvar');
-    
-        // Verifica se todos os campos foram preenchidos
-        if (nome && cpf && email && senha && confirmaSenha) {
-            // Remove a propriedade 'display: none' do botão
-            botaoSalvar.style.display = 'block';
-        } else {
-            // Adiciona a propriedade 'display: none' ao botão
-            botaoSalvar.style.display = 'none';
-        }
-    }
-    
-    function validarSenha(senha) {
-        console.log('Senha digitada: ' + senha);  // Adicione esta linha
-        var regras = [
-            { regra: /.{6,}/, elemento: document.getElementById('regraTamanho') },
-            { regra: /[A-Za-z]/, elemento: document.getElementById('regraLetra') },
-            { regra: /[\!\@\#\$\%\^\&\*\(\)\_\+\-\=\{\}\[\]\\\|\:\;\"\'\<\>\,\.\?\/\~\`]/, elemento: document.getElementById('regraEspecial') },
-            { regra: /[0-9]/, elemento: document.getElementById('regraNumero') },
-        ];
-    
-        for (var i = 0; i < regras.length; i++) {
-            if (senha.match(regras[i].regra)) {
-                regras[i].elemento.className = 'regraVerde';
-            } else {
-                regras[i].elemento.className = 'regraVermelha';
-            }
-        }
-    }
+ // Obtém os parâmetros da URL
+ var urlParams = new URLSearchParams(window.location.search);
 
-    
-    function mostrarSenha(id) {
-        var senha = document.getElementById(id);
-        var botao = senha.nextElementSibling;
-        if (senha.type === "password") {
-          senha.type = "text";
-          botao.innerHTML = '<img src="../doc/ver.png" alt="Ocultar senha">';
-        } else {
-          senha.type = "password";
-          botao.innerHTML = '<img src="../oc/fechar-o-olho.png" alt="Mostrar senha">';
-        }
-      }
-      
+ // Verifica se o parâmetro de erro existe
+ if (urlParams.has('erro')) {
+     var erro = urlParams.get('erro');
+
+     // Verifica o tipo de erro e exibe a mensagem de alerta correspondente
+     if (erro === 'UsuarioJaExiste') {
+         alert('Este usuário já existe!');
+     }
+     // Adicione mais condições aqui para outros tipos de erros
+ }

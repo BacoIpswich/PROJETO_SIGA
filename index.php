@@ -1,3 +1,15 @@
+<?php
+session_start(); // Inicia a sessão
+
+if (isset($_SESSION['erro'])) {
+    echo '<script>alert("' . $_SESSION['erro'] . '");</script>';
+    unset($_SESSION['erro']); // Limpa a mensagem de erro da sessão
+}
+
+// Seu código HTML aqui...
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

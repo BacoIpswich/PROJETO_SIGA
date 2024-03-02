@@ -1,4 +1,6 @@
 <?php
+session_start(); // Inicia a sessão
+
 // Conexão com o banco de dados
 $host = 'localhost';
 $db   = 'login'; 
@@ -20,16 +22,29 @@ $email = $mysqli->real_escape_string($_POST['email']);
 $senha = $mysqli->real_escape_string($_POST['senha']);
 $nivel_acesso = 3; // Nível de acesso padrão
 
-// Cria a consulta SQL
-$sql = "INSERT INTO users (nome, cpf, email, senha, nivel_acesso) VALUES ('$nome', '$cpf', '$email', '$senha', '$nivel_acesso')";
+// Verifica se o usuário já existe
+$sql = "SELECT * FROM users WHERE email = '$email' OR cpf = '$cpf'";
+if ($result = $mysqli->query($sql)) {
+    if ($result->num_rows > 0) {
+        // O usuário já existe, armazena a mensagem de erro na sessão e redireciona para a página de login
+        $_SESSION['erro'] = 'Este usuário já existe!';
+        header("Location: ../index.php");
+        exit;
+    } else {
+        // O usuário não existe, cria a consulta SQL para inserir o novo usuário
+        $sql = "INSERT INTO users (nome, cpf, email, senha, nivel_acesso) VALUES ('$nome', '$cpf', '$email', '$senha', '$nivel_acesso')";
 
-// Executa a consulta
-if ($mysqli->query($sql) === TRUE) {
-    // Redireciona para a página de login
-    header("Location: login.php");
-    exit;
+        // Executa a consulta
+        if ($mysqli->query($sql) === TRUE) {
+            // Redireciona para a página de login
+            header("Location: ../index.php");
+            exit;
+        } else {
+            echo "Erro ao inserir o usuário: " . $mysqli->error;
+        }
+    }
 } else {
-    echo "Erro: " . $sql . "<br>" . $mysqli->error;
+    echo "Erro ao verificar a existência do usuário: " . $mysqli->error;
 }
 
 // Fecha a conexão

@@ -40,17 +40,12 @@
         </div>
     </div>
     <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
-        <div class="form-group" style="flex: 1; position: relative;">
-            <input type="password" placeholder="Senha" id="senha" name="senha" onkeydown="validarSenhaCadastro();" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
-            <button type="button" onclick="mostrarSenha('senha')" style="position: absolute; right: 0; top: 0;"><img src="../oc/fechar-o-olho.png" alt="Mostrar senha"></button>
+        <div class="form-group" style="flex: 1;">
+            <input type="password" placeholder="Senha" id="senha" name="senha" required="" style="width: 100%;">
         </div>
-        <div class="form-group" style="flex: 1; position: relative;">
-            <input type="password" placeholder="Confirmar Senha" id="confirmaSenha" name="confirmaSenha" onkeydown="validarSenhaCadastro();" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
-            <button type="button" onclick="mostrarSenha('confirmaSenha')" style="position: absolute; right: 0; top: 0;"><img src="../oc/fechar-o-olho.png" alt="Mostrar senha"></button>
+        <div class="form-group" style="flex: 1;">
+            <input type="password" placeholder="Confirmar Senha" id="confirmaSenha" name="confirmaSenha" required="" style="width: 100%;">
         </div>
-    </div>
-    
-    
     </div>
     <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
         <ul style="padding-left: 20px; text-align: left; flex: 1;">
@@ -60,27 +55,23 @@
             <li><p id="regraNumero" class="regraVermelha">Mínimo de 1 número</p></li>
         </ul>
         <div class="form-group" style="flex: 1;">   
-        <ul style="padding-left: 20px; text-align: left; flex: 1;">
-            <li><p id="regraIgual" class="regraVermelha">Senhas compatíveis</p></li>
-        </ul>       
-            <input type="submit" id="botaoSalvar" value="Salvar" style="width: 100%;">
+            <ul style="padding-left: 20px; text-align: left; flex: 1;">
+                <li><p id="regraIgual" class="regraVermelha">Senhas compatíveis</p></li>
+            </ul>    
+                <input type="submit" id="botaoSalvar" value="Salvar" style="width: 100%;">
         </div>
-    </div>
+    </div>    
 </form>
-
-
-
-
 <div>
     <br>
     <hr>
     <a href="../index.php">Voltar</a>
 </div>
 
-
     </div>
 
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
+    
 </body>
 </html>
