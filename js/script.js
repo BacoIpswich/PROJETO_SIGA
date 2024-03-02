@@ -48,3 +48,63 @@ function validarSenha(el) {
     mensagemErroSenha.textContent = '';
     return true;
 }
+
+function validarSenhaCadastro() {
+    var senha = document.getElementById('senha').value;
+    var confirmaSenha = document.getElementById('confirmaSenha').value;
+
+    function validarSenhaCadastro() {
+        var senha = document.getElementById('senha').value;
+        var confirmaSenha = document.getElementById('confirmaSenha').value;
+        var botaoSalvar = document.getElementById('botaoSalvar');
+    
+        // Verifica o comprimento da senha
+        if (senha.length < 6) {
+            document.getElementById('regraTamanho').classList.add('regraVermelha');
+        } else {
+            document.getElementById('regraTamanho').classList.remove('regraVermelha');
+        }
+    
+        // Verifica a presença de uma letra maiúscula
+        if (!/[A-Z]/.test(senha)) {
+            document.getElementById('regraMaiuscula').classList.add('regraVermelha');
+        } else {
+            document.getElementById('regraMaiuscula').classList.remove('regraVermelha');
+        }
+    
+        // Verifica a presença de uma letra minúscula
+        if (!/[a-z]/.test(senha)) {
+            document.getElementById('regraMinuscula').classList.add('regraVermelha');
+        } else {
+            document.getElementById('regraMinuscula').classList.remove('regraVermelha');
+        }
+    
+        // Verifica a presença de um caractere especial
+        if (!/[!@#$%^&*]/.test(senha)) {
+            document.getElementById('regraEspecial').classList.add('regraVermelha');
+        } else {
+            document.getElementById('regraEspecial').classList.remove('regraVermelha');
+        }
+    
+        // Verifica a presença de um número
+        if (!/[0-9]/.test(senha)) {
+            document.getElementById('regraNumero').classList.add('regraVermelha');
+        } else {
+            document.getElementById('regraNumero').classList.remove('regraVermelha');
+        }
+    
+        // Verifica se as senhas são iguais
+        if (senha !== confirmaSenha) {
+            document.getElementById('regraIgual').classList.add('regraVermelha');
+        } else {
+            document.getElementById('regraIgual').classList.remove('regraVermelha');
+        }
+    
+        // Habilita o botão Salvar se todas as regras forem cumpridas
+        var regras = document.querySelectorAll('.regraVermelha');
+        if (regras.length === 0) {
+            botaoSalvar.disabled = false;
+        } else {
+            botaoSalvar.disabled = true;
+        }
+    }

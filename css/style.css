@@ -90,15 +90,13 @@ body {
     color: #1e7e34 !important;
     }
     
-.erro-login {
-    color: red;
-    }
-
-.regraVermelha {
+    .regraVermelha {
         color: red;
+        margin:0px;
     }
     
 .regraVerde {
         color: green;
+        margin:0px;
     }
     

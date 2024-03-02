@@ -34,17 +34,17 @@
             <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
         </div>
 
-        <p id="mensagemErroCPF"></p>
+        <p id="mensagemErroCPF" class="regraVermelha"></p>
 
         <div class="form-group">
             <input type="password" placeholder="Senha" id="senha" name="senha" oninput="validarSenha(this); validarSenhas();" required="">
-            <p class="erro-login" id="mensagemErroSenha"></p>
+            <p id="mensagemErroSenha" class="regraVermelha"></p>
         </div>
         <div class="form-group">
             <input type="submit" value="Logar">
         </div>
         <?php if (isset($_SESSION['erro'])): ?>
-    <p><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
+    <p class="regraVermelha"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
 <?php endif; ?>
 
     </form>
