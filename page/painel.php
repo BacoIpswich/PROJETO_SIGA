@@ -35,16 +35,16 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
             <hr>
         </div>
         <div class="menu-lateral">
-        <p class="login">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?></p>
-    <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
-    <a href="gerenciamento.php"><button>Gerenciamento</button></a>
-    <a href="info_chefia.php"><button>Informativos</button></a>
-    <a href="relatorios.php"><button>Relatórios</button></a>
-    <a href="perfil.php"><button>Perfil</button></a>
-    <a href="configuracoes.php"><button>Configurações</button></a>
-    <a href="suporte.php"><button>Suporte</button></a>
-    <a href="../php/logout.php"><button>Sair</button></a>
-</div>
+            <p class="login">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?></p>
+                <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
+                <a href="gerenciamento.php"><button>Gerenciamento</button></a>
+                <a href="info_chefia.php"><button>Informativos</button></a>
+                <a href="relatorios.php"><button>Relatórios</button></a>
+                <a href="perfil.php"><button>Perfil</button></a>
+                <a href="configuracoes.php"><button>Configurações</button></a>
+                <a href="suporte.php"><button>Suporte</button></a>
+                <a href="../php/logout.php"><button>Sair</button></a>
+        </div>
 
     </div>
 
