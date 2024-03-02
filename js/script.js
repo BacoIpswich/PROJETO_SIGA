@@ -66,19 +66,12 @@ function validarSenhaCadastro() {
         }
     
         // Verifica a presença de uma letra maiúscula
-        if (!/[A-Z]/.test(senha)) {
+        if (!/[a-zA-Z]/.test(senha)) {
             document.getElementById('regraMaiuscula').classList.add('regraVermelha');
         } else {
             document.getElementById('regraMaiuscula').classList.remove('regraVermelha');
         }
-    
-        // Verifica a presença de uma letra minúscula
-        if (!/[a-z]/.test(senha)) {
-            document.getElementById('regraMinuscula').classList.add('regraVermelha');
-        } else {
-            document.getElementById('regraMinuscula').classList.remove('regraVermelha');
-        }
-    
+        
         // Verifica a presença de um caractere especial
         if (!/[!@#$%^&*]/.test(senha)) {
             document.getElementById('regraEspecial').classList.add('regraVermelha');

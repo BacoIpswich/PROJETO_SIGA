@@ -27,7 +27,7 @@
         </div>
 
         <!-- Formulário de cadastro -->
-        <form action="cadastrar.php" method="post">
+        <form action="../php/cadastrar.php" method="post">
             <div class="form-group">
                 <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
             </div>
@@ -39,11 +39,11 @@
             </div>
 
             <div class="form-group">
-                <input type="password" placeholder="Senha" id="senha" name="senha" oninput="validarSenhaCadastro();" required="">
-                <p class="erro-login" id="mensagemErroSenha"></p>
+                <input type="password" placeholder="Senha" id="senha" name="senha" onkeyup="validarSenhaCadastro();" required="">
+                <p id="mensagemErroSenha" class="regraVermelha"></p>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Confirmar Senha" id="confirmaSenha" name="confirmaSenha" oninput="validarSenhaCadastro();" required="">
+                <input type="password" placeholder="Confirmar Senha" id="confirmaSenha" name="confirmaSenha" onkeyup="validarSenhaCadastro();" required="">
             </div>
             <div id="regrasSenha">
                 <p id="regraTamanho" class="regraVermelha">Mínimo de 6 caracteres</p>
