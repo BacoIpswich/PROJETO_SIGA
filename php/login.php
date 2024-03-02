@@ -29,14 +29,25 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
 
     // Verifica se a consulta retornou algum resultado
     if ($stmt->rowCount() > 0) {
-        // Usuário autenticado, define a variável de sessão
+        // Recupera os dados do usuário
+        $user = $stmt->fetch();
+
+        // Imprime os dados do usuário para fins de depuração
+        echo '<pre>';
+        print_r($user);
+        echo '</pre>';
+
+        // Usuário autenticado, define as variáveis de sessão
         $_SESSION['logado'] = true;
+        $_SESSION['nome'] = $user['nome'];
+
         // Redireciona para a página do painel
         header('Location: ../page/painel.php');
         exit;
     } else {
         // Autenticação falhou, armazena a mensagem de erro na sessão
         $_SESSION['erro'] = "CPF ou senha incorretos.";
+
         // Redireciona de volta para a página de login
         header('Location: ../index.php');
         exit;

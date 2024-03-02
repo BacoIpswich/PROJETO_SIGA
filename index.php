@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <input type="password" placeholder="Senha" id="senha" name="senha" oninput="validarSenha(this); validarSenhas();" required="">
-            <p id="mensagemErroSenha"></p>
+            <p class="erro-login" id="mensagemErroSenha"></p>
         </div>
         <div class="form-group">
             <input type="submit" value="Logar">

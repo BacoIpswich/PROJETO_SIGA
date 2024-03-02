@@ -35,6 +35,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
             <hr>
         </div>
         <div class="menu-lateral">
+        <p class="login">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?></p>
     <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
     <a href="gerenciamento.php"><button>Gerenciamento</button></a>
     <a href="info_chefia.php"><button>Informativos</button></a>
@@ -51,6 +52,3 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
     <script src="../js/script.js"></script>
 </body>
 </html>
-
-
-
