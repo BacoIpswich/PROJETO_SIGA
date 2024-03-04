@@ -13,3 +13,8 @@ acesso 3:
 Nome: Victor Ferreira
 CPF: 855.435.284-00
 Senha: X9IEF+
+
+(index)
+<?php if (isset($_SESSION['erro'])): ?>
+    <p class="regraVermelha"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
+<?php endif; ?>
