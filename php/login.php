@@ -39,6 +39,8 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
             // Usuário autenticado, define as variáveis de sessão
             $_SESSION['logado'] = true;
             $_SESSION['nome'] = $user['nome'];
+            $_SESSION['cpf'] = $cpf;
+            $_SESSION['email'] = $email;
 
             // Redireciona para a página do painel
             header('Location: ../page/painel.php');
