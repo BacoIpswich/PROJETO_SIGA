@@ -36,6 +36,7 @@ if ($result = $mysqli->query($sql)) {
 
         // Executa a consulta
         if ($mysqli->query($sql) === TRUE) {
+            $_SESSION['sucesso'] = 'Cadastro efetivado com sucesso!';
             // Redireciona para a página de login
             header("Location: ../index.php");
             exit;

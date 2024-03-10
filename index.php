@@ -1,11 +1,10 @@
 <?php
 session_start(); // Inicia a sessão
 
-if (isset($_SESSION['erro'])) {
-    echo '<script>alert("' . $_SESSION['erro'] . '");</script>';
-    unset($_SESSION['erro']); // Limpa a mensagem de erro da sessão
+if (isset($_SESSION['sucesso'])) {
+    echo '<script>alert("' . $_SESSION['sucesso'] . '");</script>';
+    unset($_SESSION['sucesso']); // Limpa a mensagem de sucesso da sessão
 }
-
 ?>
 
 
@@ -22,55 +21,61 @@ if (isset($_SESSION['erro'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
-    <div class="container">
+    <div class="container"> <!-- Início do container -->
+
         <header>
             <a href="page/painel.php">
             <img src="doc/CAPA_FIOCRUZ.png" alt="Capa ini" class="responsive-img">
             </a>
         </header>
-        <div>
+
+        <div> <!-- Início do div para o título -->
             <hr>
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Login</h1>
             <hr>
-        </div>
-        <div>
+        </div> <!-- Fim do div para o título -->
+
+        <div> <!-- Início do div para a imagem de configuração -->
             <img src="doc/bt_configuração.bmp" alt="Configuração">
-        </div>
+        </div> <!-- Fim do div para a imagem de configuração -->
 
-        <form action="php/login.php" method="POST">
-        <div class="form-group">
-            <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
-        </div>
+        <form action="php/login.php" method="POST"> <!-- Início do formulário -->
+            <div class="form-group"> <!-- Início do div para o campo CPF -->
+                <input type="text" placeholder="CPF" id="cpf" name="cpf" oninput="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="">
+            </div> <!-- Fim do div para o campo CPF -->
 
-        <p id="mensagemErroCPF" class="regraVermelha"></p>
+            <p id="mensagemErroCPF" class="regraVermelha"></p>
 
-        <div class="form-group">
-            <input type="password" placeholder="Senha" id="senha" name="senha" oninput="validarSenha(this); validarSenhas();" required="">
-            <p id="mensagemErroSenha" class="regraVermelha"></p>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Logar">
-        </div>
-        <?php if (isset($_SESSION['erro'])): ?>
-    <p class="regraVermelha"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
-<?php endif; ?>
+            <div class="form-group"> <!-- Início do div para o campo Senha -->
+                <input type="password" placeholder="Senha" id="senha" name="senha" oninput="validarSenha(this); validarSenhas();" required="">
+            </div> <!-- Fim do div para o campo Senha -->
 
-    </form>
-        <div>
+            <div class="form-group"> <!-- Início do div para o botão Logar -->
+    <input type="submit" value="Logar">
+    <p id="mensagemErroLogin" class="regraVermelha"></p> <!-- Nova linha para a mensagem de erro do login -->
+</div> <!-- Fim do div para o botão Logar -->
+
+
+            <?php if (isset($_SESSION['erro'])): ?>
+                <p class="regraVermelha"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
+            <?php endif; ?>
+        </form> <!-- Fim do formulário -->
+
+        <div> <!-- Início do div para os links Esqueci a senha e Cadastro -->
             <br>
             <hr>
             <a href="page/recuperacao_senha.html">Esqueci a senha</a><br>
             <a href="page/cadastro.html">Cadastro</a>
-        </div>
-    </div>
+        </div> <!-- Fim do div para os links Esqueci a senha e Cadastro -->
+    </div> <!-- Fim do container -->
 
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Seu JavaScript -->
-<script src="js/script.js"></script>
+    <!-- Seu JavaScript -->
+    <script src="js/script.js"></script>
+    <script src="js/cpf.js"></script>
 </body>
 </html>
