@@ -31,7 +31,7 @@
         <!-- Formulário de cadastro -->
         <form action="../php/cadastrar.php" method="post" style="display: flex; flex-direction: column; align-items: center;">
             <div class="form-group" style="width: 50%;"> <!-- Campo Nome -->
-                <input type="text" id="nome" name="nome" placeholder="Nome" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+                <input type="text" id="nome" name="nome" placeholder="Nome" style="width: 100%;" oninput="verificarCamposPreenchidos();" required>
             </div>
             <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
                 <div class="form-group" style="flex: 1;"> <!-- Campo CPF -->
@@ -61,7 +61,7 @@
                     <ul style="padding-left: 20px; text-align: left; flex: 1; list-style-type: none;">
                         <li><p id="regraIgual" class="">Senhas compatíveis</p></li>
                     </ul>    
-                    <input type="submit" id="botaoSalvar" value="Salvar" style="width: 100%;">
+                    <input type="submit" value="Salvar" style="width: 100%;">
                 </div>
             </div>    
         </form>

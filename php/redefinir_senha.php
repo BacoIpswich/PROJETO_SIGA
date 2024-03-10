@@ -34,9 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Define a nova senha
     $senha = "senha@$cpf_editado";
 
+    // Criptografa a senha
+    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
     // Prepara a consulta SQL para atualizar a senha
     $stmt = $pdo->prepare("UPDATE users SET senha = ? WHERE cpf = ?");
-    $result = $stmt->execute([$senha, $cpf]);
+    $result = $stmt->execute([$senha_hash, $cpf]);
 
     if ($result) {
         echo 'A senha foi alterada com sucesso no banco de dados.<br>';
@@ -54,5 +57,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
-

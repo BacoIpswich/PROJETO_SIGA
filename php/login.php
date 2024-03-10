@@ -24,33 +24,36 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
     $senha = $_POST['senha'];
 
     // Prepara a consulta SQL
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE cpf = ? AND senha = ?");
-    $stmt->execute([$cpf, $senha]);
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE cpf = ?");
+    $stmt->execute([$cpf]);
 
     // Verifica se a consulta retornou algum resultado
     if ($stmt->rowCount() > 0) {
         // Recupera os dados do usuário
         $user = $stmt->fetch();
 
-        // Imprime os dados do usuário para fins de depuração
-        echo '<pre>';
-        print_r($user);
-        echo '</pre>';
+        // Verifica a senha
+        if (password_verify($senha, $user['senha'])) {
+            // A senha está correta
 
-        // Usuário autenticado, define as variáveis de sessão
-        $_SESSION['logado'] = true;
-        $_SESSION['nome'] = $user['nome'];
+            // Usuário autenticado, define as variáveis de sessão
+            $_SESSION['logado'] = true;
+            $_SESSION['nome'] = $user['nome'];
 
-        // Redireciona para a página do painel
-        header('Location: ../page/painel.php');
-        exit;
+            // Redireciona para a página do painel
+            header('Location: ../page/painel.php');
+            exit;
+        } else {
+            // A senha está incorreta
+            $_SESSION['erro'] = "Usuário ou Senha incorretos.";
+        }
     } else {
-        // Autenticação falhou, armazena a mensagem de erro na sessão
+        // O usuário não existe
         $_SESSION['erro'] = "Usuário ou Senha incorretos.";
-
-        // Redireciona de volta para a página de login
-        header('Location: ../index.php');
-        exit;
     }
+
+    // Redireciona de volta para a página de login
+    header('Location: ../index.php');
+    exit;
 }
 ?>

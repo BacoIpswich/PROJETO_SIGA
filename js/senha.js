@@ -50,13 +50,13 @@ function validarRegrasSenha() {
         document.getElementById('regraIgual').className = 'regraVermelha';
     }
     
-    // Habilita o botão Salvar se todas as regras forem cumpridas
-    var regras = document.querySelectorAll('.regraVermelha');
-    var botaoSalvar = document.getElementById('botaoSalvar');
-    if (regras.length === 0) {
-        botaoSalvar.disabled = false;
-    } else {
-        botaoSalvar.disabled = true;
-    }
+    // // Habilita o botão Salvar se todas as regras forem cumpridas
+    // var regras = document.querySelectorAll('.regraVermelha');
+    // var botaoSalvar = document.getElementById('botaoSalvar');
+    // if (regras.length === 0) {
+    //     botaoSalvar.disabled = false;
+    // } else {
+    //     botaoSalvar.disabled = true;
+    // }
     
 } // FINAL FUNCTION validarRegrasSenha

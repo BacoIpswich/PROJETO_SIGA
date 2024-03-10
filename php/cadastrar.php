@@ -22,12 +22,15 @@ $email = $mysqli->real_escape_string($_POST['email']);
 $senha = $mysqli->real_escape_string($_POST['senha']);
 $nivel_acesso = 3; // Nível de acesso padrão
 
+// Criptografa a senha
+$senha = password_hash($senha, PASSWORD_DEFAULT);
+
 // Verifica se o usuário já existe
 $sql = "SELECT * FROM users WHERE email = '$email' OR cpf = '$cpf'";
 if ($result = $mysqli->query($sql)) {
     if ($result->num_rows > 0) {
         // O usuário já existe, armazena a mensagem de erro na sessão e redireciona para a página de login
-        $_SESSION['erro'] = 'Este usuário já existe!';
+        $_SESSION['mensagem'] = 'Este usuário já existe!';
         header("Location: ../index.php");
         exit;
     } else {
@@ -51,4 +54,5 @@ if ($result = $mysqli->query($sql)) {
 // Fecha a conexão
 $mysqli->close();
 ?>
+
 
