@@ -77,5 +77,6 @@ if (isset($_SESSION['sucesso'])) {
     <!-- Seu JavaScript -->
     <script src="js/script.js"></script>
     <script src="js/cpf.js"></script>
+    <script src="js/senha.js"></script>
 </body>
 </html>
