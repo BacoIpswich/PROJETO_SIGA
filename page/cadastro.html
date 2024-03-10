@@ -50,14 +50,15 @@
                 </div>
             </div>
             <div style="display: flex; justify-content: space-between; gap: 5px; width: 50%;">
-                <ul style="padding-left: 20px; text-align: left; flex: 1;"> <!-- Regras de senha -->
+                <ul style="padding-left: 20px; text-align: left; flex: 1; list-style-type: none;"> <!-- Regras de senha -->
                     <li><p id="regraTamanho" class="">Mínimo de 6 caracteres</p></li>
                     <li><p id="regraLetra" class="">Mínimo de 1 letra</p></li>
                     <li><p id="regraEspecial" class="">Mínimo de 1 caractere especial</p></li>
                     <li><p id="regraNumero" class="">Mínimo de 1 número</p></li>
+                    <li><p id="mensagemErroCPF" class="regraVermelha"></p></li>
                 </ul>
                 <div class="form-group" style="flex: 1;"> <!-- Botão Salvar -->  
-                    <ul style="padding-left: 20px; text-align: left; flex: 1;">
+                    <ul style="padding-left: 20px; text-align: left; flex: 1; list-style-type: none;">
                         <li><p id="regraIgual" class="">Senhas compatíveis</p></li>
                     </ul>    
                     <input type="submit" id="botaoSalvar" value="Salvar" style="width: 100%;">

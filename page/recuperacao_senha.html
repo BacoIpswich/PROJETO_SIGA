@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <!-- Titulo -->
-    <title>SIGA | Cadastro</title>
+    <title>SIGA | Recuperação de Senha</title>
 
     <!-- Inclua o seu arquivo CSS local aqui -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -14,55 +14,84 @@
 
 </head>
 <body>
-    <div class="container">
-        <header>
+    <!-- Início do container principal -->
+    <div class="container"> 
+        <!-- Início do cabeçalho -->
+        <header> 
             <a href="painel.html">
             <img src="../doc/CAPA_FIOCRUZ.png" alt="Capa ini" class="responsive-img">
             </a>
         </header>
-        <div>
+        <!-- Fim do cabeçalho -->
+        
+        <!-- Início do título -->
+        <div> 
             <hr>
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Recuperação de Senha</h1>
             <hr>
-        </div>
-        <div>
+        </div> 
+        <!-- Fim do título-->
+        
+        <!-- Início da imagem de busca -->
+        <div> 
             <img src="../doc/bt_buscar.bmp" alt="Buscar">
-        </div>
-        <div>
+        </div> 
+        <!-- Fim da imagem de busca -->
+        
+        <!-- Início do formulário de recuperação de senha -->
+        <div> 
             <p>Por favor, insira seu CPF para recuperar sua senha:</p>
-            <form id="recuperacaoSenhaForm">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <form id="recuperacaoSenhaForm" style="width: 50%;">
-                        <div style="display: flex; justify-content: space-between; gap: 5px;">
-                            <div class="form-group" style="flex: 1;">
-                                <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+                <!-- Início do container do formulário -->
+                <div style="display: flex; flex-direction: column; align-items: center;"> 
+                    <form id="recuperacaoSenhaForm" style="width: 50%;" action="../php/recuperar_senha.php" method="post">
+                        <!-- Início da linha de campos de entrada -->
+                        <div style="display: flex; justify-content: space-between; gap: 5px;"> 
+                            <!-- Início do campo CPF -->
+                            <div class="form-group" style="flex: 1;"> 
+                                <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="" style="width: 100%;">
                             </div>
-                            <div class="form-group" style="flex: 1;">
-                                <input type="email" id="email" name="email" placeholder="E-mail" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+                            
+                            <!-- Fim do campo CPF -->
+                            
+                            <!-- Início do campo E-mail -->
+                            <div class="form-group" style="flex: 1;"> 
+                                <input type="email" id="email" name="email" placeholder="E-mail" required="" style="width: 100%;">
                             </div>
+                            <!-- Fim do campo E-mail -->
                         </div>
-                        <div style="display: flex; justify-content: space-between; gap: 5px;">
-                            <div class="form-group" style="flex: 1;">
-                                <input type="tel" placeholder="WhatsApp" id="tel" name="tel" pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato: (XX) XXXXX-XXXX" required="" style="width: 100%;">
-
-                            </div>
-                            <div class="form-group" style="flex: 1;">
+                        <!-- Fim da linha de campos de entrada -->
+                        
+                        <!-- Início da linha de campos de entrada -->
+                        <div style="display: flex; justify-content: space-between; gap: 5px;"> 
+                                                        
+                            <!-- Início do botão Recuperar Senha -->
+                            <div class="form-group" style="flex: 1;"> 
                                 <input type="submit" value="Recuperar Senha" style="width: 100%;"></input>
                             </div>
+                            <!-- Fim do botão Recuperar Senha -->
+                            
                         </div>
+                        <p id="mensagemErroCPF" class="regraVermelha"></p>
+                        <!-- Fim da linha de campos de entrada -->
                     </form>
                 </div>
+                <!-- Fim do container do formulário -->
                 
                 <br><br>
                 <hr>
-                <a href="../index.php">Voltar</a>
+                <!-- Início do link Voltar -->
+                <a href="../index.php">Voltar</a> 
+                <!-- Fim do link Voltar -->
             </div>
         </div>
+        <!-- Fim do formulário de recuperação de senha -->
         
-    </div>
+    </div> 
+    <!-- Fim do container principal -->
 
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
+    <script src="../js/cpf.js"></script>
     
 </body>
 </html>

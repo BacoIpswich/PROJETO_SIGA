@@ -1,9 +1,9 @@
 <?php
 session_start(); // Inicia a sessão
 
-if (isset($_SESSION['sucesso'])) {
-    echo '<script>alert("' . $_SESSION['sucesso'] . '");</script>';
-    unset($_SESSION['sucesso']); // Limpa a mensagem de sucesso da sessão
+if (isset($_SESSION['mensagem'])) {
+    echo '<script>alert("' . $_SESSION['mensagem'] . '");</script>';
+    unset($_SESSION['mensagem']); // Limpa a mensagem de sucesso da sessão
 }
 ?>
 
