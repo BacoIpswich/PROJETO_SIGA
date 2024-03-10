@@ -6,7 +6,6 @@ if (isset($_SESSION['erro'])) {
     unset($_SESSION['erro']); // Limpa a mensagem de erro da sessão
 }
 
-// Seu código HTML aqui...
 ?>
 
 

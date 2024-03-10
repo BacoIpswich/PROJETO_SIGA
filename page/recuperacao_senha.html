@@ -26,17 +26,34 @@
             <hr>
         </div>
         <div>
+            <img src="../doc/bt_buscar.bmp" alt="Buscar">
+        </div>
+        <div>
             <p>Por favor, insira seu CPF para recuperar sua senha:</p>
             <form id="recuperacaoSenhaForm">
-                <div class="form-group">
-                    <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="" style="width: 20%;" oninput="verificarCamposPreenchidos();">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <form id="recuperacaoSenhaForm" style="width: 50%;">
+                        <div style="display: flex; justify-content: space-between; gap: 5px;">
+                            <div class="form-group" style="flex: 1;">
+                                <input type="text" placeholder="CPF" id="cpf" name="cpf" onkeyup="formatarCPF(this);" onblur="validarCPF(this)" maxlength="14" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <input type="email" id="email" name="email" placeholder="E-mail" required="" style="width: 100%;" oninput="verificarCamposPreenchidos();">
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; gap: 5px;">
+                            <div class="form-group" style="flex: 1;">
+                                <input type="tel" placeholder="WhatsApp" id="tel" name="tel" pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato: (XX) XXXXX-XXXX" required="" style="width: 100%;">
+
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <input type="submit" value="Recuperar Senha" style="width: 100%;"></input>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                <input type="submit" value="Recuperar Senha"></input>
-                </div>
-            </form>
-            <div>
-                <br>
+                
+                <br><br>
                 <hr>
                 <a href="../index.php">Voltar</a>
             </div>

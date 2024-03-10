@@ -52,7 +52,7 @@ function validarSenha(el) {
 function validarSenhaCadastro() {
     var senha = document.getElementById('senha').value;
     var confirmaSenha = document.getElementById('confirmaSenha').value;
-
+}
     function validarSenhaCadastro() {
         var senha = document.getElementById('senha').value;
         var confirmaSenha = document.getElementById('confirmaSenha').value;
@@ -115,3 +115,24 @@ function validarSenhaCadastro() {
      }
      // Adicione mais condições aqui para outros tipos de erros
  }
+
+
+ function recuperarSenha(event) {
+    event.preventDefault(); // Isso impede que a página seja recarregada quando o formulário for enviado
+  
+    var cpf = document.getElementById("cpf").value;
+  
+    // Aqui você pode adicionar a lógica para verificar o CPF e enviar o e-mail
+    // Por exemplo, você pode fazer uma solicitação AJAX ao seu servidor aqui
+  
+    // Vamos supor que o e-mail associado ao CPF é 'usuario@example.com'
+    var email = 'usuario@example.com';
+  
+    // Mostra apenas a parte do e-mail antes do '@'
+    var emailParcial = email.split('@')[0].slice(0,3) + '***@' + email.split('@')[1];
+  
+    alert("Um e-mail foi enviado para o endereço de e-mail associado ao CPF: " + cpf + ". Verifique sua caixa de entrada em " + emailParcial);
+  }
+  
+  // Adicione um ouvinte de evento ao formulário para chamar a função recuperarSenha quando o formulário for enviado
+  document.getElementById("recuperacaoSenhaForm").addEventListener("submit", recuperarSenha);
