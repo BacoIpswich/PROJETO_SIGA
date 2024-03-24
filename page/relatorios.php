@@ -32,18 +32,18 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
         <div>
             <hr>
                 <h1>Sistema Intranet de Gerenciamento Almoxarife <br> Relatórios</h1>
-                <p class="login" style="color: #1e7e31;text-align:left">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>   |   <a href="../php/logout.php">Sair</a></p>
+                <h5 class="login" style="color: #1e7e31;text-align:left">Olá, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>   |   <a href="../php/logout.php">Sair</a></h5>
             <hr>
         </div>
         <div class="menu-lateral">
-                <a href="painel.php"><button>Painel</button></a>
-                <a href="ordens_servicos.php"><button>Ordens de Serviços</button></a>
-                <a href="gerenciamento.php"><button>Gerenciamento</button></a>
-                <a href="info_chefia.php"><button>Informativos</button></a>
-                <a href="relatorios.php"><button>Relatórios</button></a>
-                <a href="perfil.php"><button>Perfil</button></a>
-                <a href="configuracoes.php"><button>Configurações</button></a>
-                <a href="suporte.php"><button>Suporte</button></a>
+            <a href="painel.php"><button>Painel</button></a>
+            <a href="mascaras_pff_n95.php"><button>Máscara PFF/N95</button></a>
+            <a href="documentos.php"><button>Documentos</button></a>
+            <a href="blog.php"><button>Blog</button></a>
+            <a href="relatorios.php"><button>Relatórios</button></a>
+            <a href="perfil.php"><button>Perfil</button></a>
+            <!-- <a href="senha.php"><button>Senha</button></a> -->
+            <a href="suporte.php"><button>Suporte</button></a>
         </div>
 
     </div>
