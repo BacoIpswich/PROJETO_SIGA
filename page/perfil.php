@@ -83,16 +83,18 @@ $mysqli->close();
             color: #fff;
             border-radius: 5px;
             text-align: center;
-            width: 250%;
-            margin-top: 15px;
-            margin-right: 15px;
+            font-size: x-large;
+            transition: background-color 0.3s ease, color 1.5s ease;
+            width: 50%;
             padding: 15px;
         }
-        .form-group-perfil span {
-            position: absolute;
-            left: 5px;
-            margin-top: 5px;
-            background-color: #fff;
+        .form-group-perfil button:hover {
+            color: white; /* Cor do texto quando o mouse passa por cima */
+            background-color: darkgreen; /* Cor de fundo quando o mouse passa por cima */
+        }
+        button:disabled, input:disabled, select:disabled {
+            background-color: #cccccc;
+            /* color: #ffffff; */
         }
 
     </style>
@@ -125,46 +127,47 @@ $mysqli->close();
          <div class="formulario-perfil"> 
             <form id="perfil-form">
                 <div class="form-group-perfil">
-                    <input autocomplete="off" type="text" id="nome" name="nome" required value="<?php echo $usuario['nome']; ?>" disabled>
-                    <span>Nome:</span><br>
+                    <input autocomplete="off" type="text" id="nome" name="nome" required value="<?php echo $usuario['nome']; ?>" disabled placeholder="Nome">
+                    
                 </div>
                 <div class="form-group-perfil">
-                    <input autocomplete="off" type="email" id="email" name="email" required value="<?php echo $usuario['email']; ?>" disabled>
-                    <span>E-mail:</span><br>
+                    <input autocomplete="off" type="email" id="email" name="email" required value="<?php echo $usuario['email']; ?>" disabled placeholder="E-mail">
+                    
                 </div>
                 <div class="form-group-perfil">
-                    <input autocomplete="off" type="date" id="data_nascimento" name="data_nascimento"  value="<?php echo $usuario['data_nascimento']; ?>" disabled>
-                    <span>Data de Nascimento:</span><br>
+                    <input autocomplete="off" type="date" id="data_nascimento" name="data_nascimento"  value="<?php echo $usuario['data_nascimento']; ?>" disabled placeholder="Data de Nascimento">
+                    
                 </div>
                 <div class="form-group-perfil">
-                    <select autocomplete="off" id="genero" name="genero" disabled>
+                    <select autocomplete="off" id="genero" name="genero" disabled placeholder="Gênero">
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                         <option value="Outro">Outro</option>
                         <option value="Prefiro não dizer">Prefiro não dizer</option>
                     </select>
-                    <span>Gênero:</span><br>
+                    
                 </div>
                 <div class="form-group-perfil">
-                    <select autocomplete="off" id="estado" name="estado" disabled onchange="updateCidades()">
+                    <select autocomplete="off" id="estado" name="estado" disabled placeholder="Estado" onchange="updateCidades()">
                         <option value="rj">Rio de Janeiro</option>
                         <option value="sp">São Paulo</option>
                     </select>
-                    <span>Estado:</span><br>
+                    
                 </div>
                 <div class="form-group-perfil">
-                    <select autocomplete="off" id="cidade" name="cidade" disabled>>
+                    <select autocomplete="off" id="cidade" name="cidade" disabled placeholder="Cidade">
                     </select>
-                    <span>Cidade:</span><br>
+                    
                 </div>
                 <div class="form-group-perfil">
-                    <input autocomplete="off" type="tel" id="telefone" name="telefone" value="<?php echo $usuario['telefone']; ?>" disabled>
-                    <span>Telefone:</span><br>
-                </div>
+                    <input autocomplete="off" type="tel" id="telefone" name="telefone" value="<?php echo $usuario['telefone']; ?>" disabled placeholder="Telefone">
+                    
+                </div><br><br>
                 <div class="form-group-perfil">
-                    <button type="button" id="editar-btn">Editar</button><br><br>
-                    <button type="submit" id="salvar-btn" disabled>Salvar</button><br><br>
-                    <button type="button" id="cancelar-btn" disabled>Cancelar</button>
+                    <button type="button" id="editar-btn" >Editar</button><br><br>
+                    <button type="button" id="senha-btn" ><a href="senha.php" style="color:#fff;text-decoration: none;">Trocar Senha</a></button><br><br>
+                    <button type="submit" id="salvar-btn"  disabled>Salvar</button><br><br>
+                    <button type="button" id="cancelar-btn"  disabled>Cancelar</button>
                 </div>    
             </form><!-- fim perfil-form-->
         </div><!-- fim formulario-perfil-->
@@ -174,52 +177,75 @@ $mysqli->close();
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
     <script>
-        document.getElementById('editar-btn').addEventListener('click', function() {
-            // Habilita os campos do formulário
-            var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
-            campos.forEach(function(campo) {
-                campo.disabled = false;
-            });
+document.getElementById('editar-btn').addEventListener('click', function() {
+    // Habilita os campos do formulário
+    var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
+    campos.forEach(function(campo) {
+        campo.disabled = false;
+        campo.style.Color = "#ccc"; // Cor original
+    });
 
-            // Habilita os botões "Salvar" e "Cancelar"
-            document.getElementById('salvar-btn').disabled = false;
-            document.getElementById('cancelar-btn').disabled = false;
-        });
+    // Habilita os botões "Salvar" e "Cancelar"
+    var salvarBtn = document.getElementById('salvar-btn');
+    salvarBtn.disabled = false;
+    salvarBtn.style.backgroundColor = "#1e7e34"; // Cor original
+    salvarBtn.style.color = "#ffffff"; // Cor original
 
-        document.getElementById('cancelar-btn').addEventListener('click', function() {
-            // Desabilita os campos do formulário
-            var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
-            campos.forEach(function(campo) {
-                campo.disabled = true;
-            });
+    var cancelarBtn = document.getElementById('cancelar-btn');
+    cancelarBtn.disabled = false;
+    cancelarBtn.style.backgroundColor = "#1e7e34"; // Cor original
+    cancelarBtn.style.color = "#ffffff"; // Cor original
 
-            // Desabilita os botões "Salvar" e "Cancelar"
-            document.getElementById('salvar-btn').disabled = true;
-            document.getElementById('cancelar-btn').disabled = true;
+    // Muda a cor do botão "Editar"
+    var editarBtn = document.getElementById('editar-btn');
+    editarBtn.style.backgroundColor = "#cccccc"; // Nova cor
+    editarBtn.style.color = "#ffffff"; // Nova cor
+});
 
-            // Recarrega a página para reverter as alterações
-            location.reload();
-        });
+document.getElementById('cancelar-btn').addEventListener('click', function() {
+    // Desabilita os campos do formulário
+    var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
+    campos.forEach(function(campo) {
+        campo.disabled = true;
+        campo.style.Color = "#1e7e34"; // Cor original
+    });
 
-        function updateCidades() {
-        var estado = document.getElementById('estado').value;
-        var cidade = document.getElementById('cidade');
+    // Desabilita os botões "Salvar" e "Cancelar"
+    var salvarBtn = document.getElementById('salvar-btn');
+    salvarBtn.disabled = true;
+    salvarBtn.style.backgroundColor = "#cccccc"; // Nova cor
+    salvarBtn.style.color = "#ffffff"; // Nova cor
 
-        // Limpa as opções existentes
-        cidade.innerHTML = '';
+    var cancelarBtn = document.getElementById('cancelar-btn');
+    cancelarBtn.disabled = true;
+    cancelarBtn.style.backgroundColor = "#cccccc"; // Nova cor
+    cancelarBtn.style.color = "#ffffff"; // Nova cor
 
-            if (estado == 'rj') {
-                // Adiciona as cidades do Rio de Janeiro
-                cidade.options.add(new Option('Rio de Janeiro', 'rio_de_janeiro'));
-                cidade.options.add(new Option('Niterói', 'niteroi'));
-                // Adicione aqui as outras cidades
-            } else if (estado == 'sp') {
-                // Adiciona as cidades de São Paulo
-                cidade.options.add(new Option('São Paulo', 'sao_paulo'));
-                cidade.options.add(new Option('Campinas', 'campinas'));
-                // Adicione aqui as outras cidades
-            }
-        }
+    // Muda a cor do botão "Editar" de volta para a original
+    var editarBtn = document.getElementById('editar-btn');
+    editarBtn.style.backgroundColor = "#1e7e34"; // Cor original
+    editarBtn.style.color = "#ffffff"; // Cor original
+});
+
+function updateCidades() {
+    var estado = document.getElementById('estado').value;
+    var cidade = document.getElementById('cidade');
+
+    // Limpa as opções existentes
+    cidade.innerHTML = '';
+
+    if (estado == 'rj') {
+        // Adiciona as cidades do Rio de Janeiro
+        cidade.options.add(new Option('Rio de Janeiro', 'rio_de_janeiro'));
+        cidade.options.add(new Option('Niterói', 'niteroi'));
+        // Adicione aqui as outras cidades
+    } else if (estado == 'sp') {
+        // Adiciona as cidades de São Paulo
+        cidade.options.add(new Option('São Paulo', 'sao_paulo'));
+        cidade.options.add(new Option('Campinas', 'campinas'));
+        // Adicione aqui as outras cidades
+    }
+}
 
     </script>
 </body>
