@@ -42,8 +42,7 @@ $mysqli->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <!-- Titulo -->
+
     <title>SIGA | Perfil</title>
 
     <!-- Inclua o seu arquivo CSS local aqui -->
@@ -54,7 +53,7 @@ $mysqli->close();
     <style>
         .grid-container{
             display: flex;
-            gap: 25%;
+            gap: 20%;
             max-width: 70%;
         }
         .formulario-perfil {
@@ -68,8 +67,7 @@ $mysqli->close();
             justify-content: space-around;
             align-items: center;
             margin-bottom: 1%;
-    }
-
+        }
         .form-group-perfil input, select  {
             width: 450px;
             margin-top: 19px;
@@ -80,26 +78,22 @@ $mysqli->close();
             border: 1px solid #ccc;
             outline: none;
         }
-
         .form-group-perfil button {
             background-color: #1e7e34;
             color: #fff;
-            cursor: pointer;
             border-radius: 5px;
             text-align: center;
             width: 250%;
             margin-top: 15px;
             margin-right: 15px;
-            margin
+            padding: 15px;
         }
-
-        .form-group-perfil span{
+        .form-group-perfil span {
             position: absolute;
             left: 5px;
             margin-top: 5px;
             background-color: #fff;
         }
-        
 
     </style>
 
@@ -107,7 +101,7 @@ $mysqli->close();
 <body>
     <div class="container">
         <header>
-        <a href="painel.php">
+            <a href="painel.php">
             <img src="../doc/CAPA_FIOCRUZ.png" alt="Capa ini" class="responsive-img">
             </a>
         </header>
@@ -126,12 +120,10 @@ $mysqli->close();
                 <a href="relatorios.php"><button>Relatórios</button></a>
                 <a href="perfil.php"><button>Perfil</button></a>
                 <a href="suporte.php"><button>Suporte</button></a>
-            </div>
+            </div> <!-- fim menu-lateral-->
        
-
-        <!-- Seu conteúdo vai aqui -->
          <div class="formulario-perfil"> 
-        <form id="perfil-form">
+            <form id="perfil-form">
                 <div class="form-group-perfil">
                     <input autocomplete="off" type="text" id="nome" name="nome" required value="<?php echo $usuario['nome']; ?>" disabled>
                     <span>Nome:</span><br>
@@ -144,106 +136,90 @@ $mysqli->close();
                     <input autocomplete="off" type="date" id="data_nascimento" name="data_nascimento"  value="<?php echo $usuario['data_nascimento']; ?>" disabled>
                     <span>Data de Nascimento:</span><br>
                 </div>
-
-                    <div class="form-group-perfil">
-                        <select autocomplete="off" id="genero" name="genero" disabled>
-                            <option value="NULL"></option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                            <option value="Outro">Outro</option>
-                            <option value="Prefiro não dizer">Prefiro não dizer</option>
-                            <!-- Adicione aqui as outras opções -->
-                        </select>
-                        <span>Gênero:</span><br>
-                    </div>
-                    <div class="form-group-perfil">
-                        <select autocomplete="off" id="estado" name="estado" disabled onchange="updateCidades()">
-                            <option value="rj">Rio de Janeiro</option>
-                            <option value="sp">São Paulo</option>
-                            <!-- Adicione aqui as outras opções -->
-                        </select>
-                        <span>Estado:</span><br>
-                    </div>
-
-                    <div class="form-group-perfil">
-                        <select autocomplete="off" id="cidade" name="cidade" disabled>
-                        
-                            <!-- As opções serão preenchidas dinamicamente com JavaScript -->
-                        </select>
-                        <span>Cidade:</span><br>
-                    </div>
+                <div class="form-group-perfil">
+                    <select autocomplete="off" id="genero" name="genero" disabled>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                        <option value="Prefiro não dizer">Prefiro não dizer</option>
+                    </select>
+                    <span>Gênero:</span><br>
+                </div>
+                <div class="form-group-perfil">
+                    <select autocomplete="off" id="estado" name="estado" disabled onchange="updateCidades()">
+                        <option value="rj">Rio de Janeiro</option>
+                        <option value="sp">São Paulo</option>
+                    </select>
+                    <span>Estado:</span><br>
+                </div>
+                <div class="form-group-perfil">
+                    <select autocomplete="off" id="cidade" name="cidade" disabled>>
+                    </select>
+                    <span>Cidade:</span><br>
+                </div>
                 <div class="form-group-perfil">
                     <input autocomplete="off" type="tel" id="telefone" name="telefone" value="<?php echo $usuario['telefone']; ?>" disabled>
                     <span>Telefone:</span><br>
                 </div>
-                <!-- Para a foto do perfil, você precisará de um manejo especial para exibir e atualizar a imagem -->
-                </div>
-
                 <div class="form-group-perfil">
                     <button type="button" id="editar-btn">Editar</button><br><br>
                     <button type="submit" id="salvar-btn" disabled>Salvar</button><br><br>
                     <button type="button" id="cancelar-btn" disabled>Cancelar</button>
-                </div>
-                
-
-        
-        </form>
-        </div>
-        </div>
-
-    </div>
+                </div>    
+            </form><!-- fim perfil-form-->
+        </div><!-- fim formulario-perfil-->
+        </div><!-- fim grid-container-->
+    </div> <!-- fim conteiner-->
 
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
     <script>
-    document.getElementById('editar-btn').addEventListener('click', function() {
-        // Habilita os campos do formulário
-        var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
-        campos.forEach(function(campo) {
-            campo.disabled = false;
+        document.getElementById('editar-btn').addEventListener('click', function() {
+            // Habilita os campos do formulário
+            var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
+            campos.forEach(function(campo) {
+                campo.disabled = false;
+            });
+
+            // Habilita os botões "Salvar" e "Cancelar"
+            document.getElementById('salvar-btn').disabled = false;
+            document.getElementById('cancelar-btn').disabled = false;
         });
 
-        // Habilita os botões "Salvar" e "Cancelar"
-        document.getElementById('salvar-btn').disabled = false;
-        document.getElementById('cancelar-btn').disabled = false;
-    });
+        document.getElementById('cancelar-btn').addEventListener('click', function() {
+            // Desabilita os campos do formulário
+            var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
+            campos.forEach(function(campo) {
+                campo.disabled = true;
+            });
 
-    document.getElementById('cancelar-btn').addEventListener('click', function() {
-        // Desabilita os campos do formulário
-        var campos = document.querySelectorAll('#perfil-form input, #perfil-form select');
-        campos.forEach(function(campo) {
-            campo.disabled = true;
+            // Desabilita os botões "Salvar" e "Cancelar"
+            document.getElementById('salvar-btn').disabled = true;
+            document.getElementById('cancelar-btn').disabled = true;
+
+            // Recarrega a página para reverter as alterações
+            location.reload();
         });
 
-        // Desabilita os botões "Salvar" e "Cancelar"
-        document.getElementById('salvar-btn').disabled = true;
-        document.getElementById('cancelar-btn').disabled = true;
+        function updateCidades() {
+        var estado = document.getElementById('estado').value;
+        var cidade = document.getElementById('cidade');
 
-        // Recarrega a página para reverter as alterações
-        location.reload();
-    });
+        // Limpa as opções existentes
+        cidade.innerHTML = '';
 
-    function updateCidades() {
-    var estado = document.getElementById('estado').value;
-    var cidade = document.getElementById('cidade');
-
-    // Limpa as opções existentes
-    cidade.innerHTML = '';
-
-    if (estado == 'rj') {
-        // Adiciona as cidades do Rio de Janeiro
-        cidade.options.add(new Option('Rio de Janeiro', 'rio_de_janeiro'));
-        cidade.options.add(new Option('Niterói', 'niteroi'));
-        // Adicione aqui as outras cidades
-    } else if (estado == 'sp') {
-        // Adiciona as cidades de São Paulo
-        cidade.options.add(new Option('São Paulo', 'sao_paulo'));
-        cidade.options.add(new Option('Campinas', 'campinas'));
-        // Adicione aqui as outras cidades
-    }
-
-    // Adicione aqui os outros estados e suas cidades
-}
+            if (estado == 'rj') {
+                // Adiciona as cidades do Rio de Janeiro
+                cidade.options.add(new Option('Rio de Janeiro', 'rio_de_janeiro'));
+                cidade.options.add(new Option('Niterói', 'niteroi'));
+                // Adicione aqui as outras cidades
+            } else if (estado == 'sp') {
+                // Adiciona as cidades de São Paulo
+                cidade.options.add(new Option('São Paulo', 'sao_paulo'));
+                cidade.options.add(new Option('Campinas', 'campinas'));
+                // Adicione aqui as outras cidades
+            }
+        }
 
     </script>
 </body>
