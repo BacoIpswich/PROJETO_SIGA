@@ -87,7 +87,7 @@ $mysqli->close();
             <form id="perfil-form" method="POST" action="../php/update_user.php">
                 <div class="form-group-perfil">
                 <input type="hidden" id="cpf" name="cpf" value="<?php echo $usuario['cpf']; ?>" disabled>
-                    <input autocomplete="off" type="text" id="nome" name="nome" required value="<?php echo $usuario['nome']; ?>" disabled placeholder="Nome">
+                    <input type="text" id="nome" name="nome" required value="<?php echo $usuario['nome']; ?>" disabled placeholder="Nome">
                 </div><!-- fim nome-->
 
                 <div class="form-group-perfil">
@@ -95,37 +95,34 @@ $mysqli->close();
                 </div><!-- fim email-->
 
                 <div class="form-group-perfil">
-                    <input autocomplete="off" type="date" id="data_nascimento" name="data_nascimento"  value="<?php echo $usuario['data_nascimento']; ?>" disabled placeholder="Data de Nascimento">
+                    <input type="date" id="data_nascimento" name="data_nascimento"  value="<?php echo $usuario['data_nascimento']; ?>" disabled placeholder="Data de Nascimento">
                 </div><!-- fim data_nascimento-->
 
                 <div class="form-group-perfil">
-                    <select autocomplete="off" id="genero" name="genero" disabled placeholder="Gênero">
-                        <option value="Masculino">Masculino</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Outro">Outro</option>
-                        <option value="Prefiro não dizer">Prefiro não dizer</option>
+                    <select id="genero" name="genero" disabled placeholder="Gênero">
+                    <?php
+                        $generos = array(
+                            "Masculino",
+                            "Feminino",
+                            "Outro",
+                            "Prefiro não dizer"
+                        );
+
+                        foreach ($generos as $genero) {
+                            $selected = ($usuario['genero'] === $genero) ? 'selected' : '';
+                            echo "<option value=\"$genero\" $selected>$genero</option>";
+                        }
+                    ?>
                     </select>
                 </div><!-- fim genero-->
 
                 <div class="form-group-perfil">
-                    <select autocomplete="off" id="estado" name="estado" disabled placeholder="Estado" onchange="updateCidades()">
-                        <option value="rj">Rio de Janeiro</option>
-                        <option value="sp">São Paulo</option>
-                    </select>
-                </div><!-- fim estado-->
-
-                <div class="form-group-perfil">
-                    <select autocomplete="off" id="cidade" name="cidade" disabled placeholder="Cidade">
-                    </select>
-                </div><!-- fim cidade-->
-
-                <div class="form-group-perfil">
-                    <input autocomplete="off" type="tel" id="telefone" name="telefone" value="<?php echo $usuario['telefone']; ?>" disabled placeholder="Telefone">
+                    <input type="tel" id="telefone" name="telefone" value="<?php echo $usuario['telefone']; ?>" disabled placeholder="Telefone">
                 </div><!-- fim telefone-->
         </div><!-- fim col 1-->
 
-            <div class="col">
-                <div class="form-group-perfil" style="position: relative;left: 30vh;top: 1vh;" >
+                <div class="col" style="left: 50%;">
+                <div class="form-group-perfil" style="display:flow;" >
                     <button type="button" id="editar-btn" >Editar</button><br>
                     <button type="button" id="senha-btn"><a for="senha-btn" href="senha.php" style="color:#fff;text-decoration: none;">Trocar Senha</a></button><br>
                     <button type="submit" id="salvar-btn"  disabled>Salvar</button><br>
@@ -203,26 +200,6 @@ document.getElementById('cancelar-btn').addEventListener('click', function() {
     senhaBtn.style.color = "#ffffff"; // Nova cor
     senhaBtn.innerHTML = '<a href="senha.php" style="color:#fff;text-decoration: none;">Trocar Senha</a>';
 });
-
-function updateCidades() {
-    var estado = document.getElementById('estado').value;
-    var cidade = document.getElementById('cidade');
-
-    // Limpa as opções existentes
-    cidade.innerHTML = '';
-
-    if (estado == 'rj') {
-        // Adiciona as cidades do Rio de Janeiro
-        cidade.options.add(new Option('Rio de Janeiro', 'rio_de_janeiro'));
-        cidade.options.add(new Option('Niterói', 'niteroi'));
-        // Adicione aqui as outras cidades
-    } else if (estado == 'sp') {
-        // Adiciona as cidades de São Paulo
-        cidade.options.add(new Option('São Paulo', 'sao_paulo'));
-        cidade.options.add(new Option('Campinas', 'campinas'));
-        // Adicione aqui as outras cidades
-    }
-}
 
     </script>
 </body>

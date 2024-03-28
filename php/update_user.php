@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+
 session_start();
 
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
@@ -22,31 +22,43 @@ if ($mysqli->connect_error) {
     die("Falha na conexão: " . $mysqli->connect_error);
 }
 
-// Obtém o CPF do usuário logado
-$cpf = $_SESSION['cpf'];
-
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtém os dados do formulário
+    $cpf = $_POST['cpf'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $data_nascimento = $_POST['data_nascimento'];
     $genero = $_POST['genero'];
-    $estado = $_POST['estado'];
-    $cidade = $_POST['cidade'];
     $telefone = $_POST['telefone'];
 
     // Prepara a consulta SQL para atualizar os dados
-    $stmt = $mysqli->prepare("UPDATE users SET nome = ?, email = ?, data_nascimento = ?, genero = ?, estado = ?, cidade = ?, telefone = ? WHERE cpf = ?");
-    $stmt->bind_param('sssssssi', $nome, $email, $data_nascimento, $genero, $estado, $cidade, $telefone, $cpf);
+    $stmt = $mysqli->prepare("UPDATE users SET nome = ?, email = ?, data_nascimento = ?, genero = ?, telefone = ? WHERE cpf = ?");
+    $stmt->bind_param('sssssi', $nome, $email, $data_nascimento, $genero, $telefone, $cpf);
 
     // Executa a consulta
-    if ($stmt->execute()) {
-        $_SESSION['mensagem'] = 'Cadastro efetivado com sucesso!';
-        header("Location: ../page/perfil.php");
-    } else {
-        echo "Erro ao atualizar os dados: " . $stmt->error;
-    }
+    // Após a atualização bem-sucedida
+if ($stmt->execute()) {
+    $_SESSION['mensagem'] = 'Cadastro efetivado com sucesso!';
+
+    // Busca novamente os dados do usuário no banco de dados
+    $nova_consulta = $mysqli->prepare("SELECT nome, email, data_nascimento, genero, telefone FROM users WHERE cpf = ?");
+    $nova_consulta->bind_param('i', $cpf); // Supondo que $cpf seja a variável com o CPF do usuário
+    $nova_consulta->execute();
+    $nova_consulta->bind_result($novo_nome, $novo_email, $nova_data_nascimento, $novo_genero, $novo_telefone);
+    $nova_consulta->fetch();
+
+    // Agora você tem os dados atualizados em $novo_nome, $novo_email, etc.
+    // Redirecione para a página de perfil ou faça o que for necessário
+    header("Location: ../page/perfil.php");
+} else {
+    echo "Erro ao atualizar os dados: " . $stmt->error;
+}
+
+$stmt->close();
+$nova_consulta->close();
+$mysqli->close();
+
 
     $stmt->close();
 }
