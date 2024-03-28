@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
@@ -10,17 +9,18 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
 
 // Conexão com o banco de dados
 $host = 'localhost';
-$db   = 'login'; 
-$user = 'root'; 
-$pass = ''; 
+$db   = 'login'; // Altere para o nome do seu banco de dados
+$user = 'root'; // Usuário padrão para MySQL
+$pass = ''; // Sem senha
 $charset = 'utf8mb4';
 
-$mysqli = new mysqli($host, $user, $pass, $db);
-
-// Verifica a conexão
-if ($mysqli->connect_error) {
-    die("Falha na conexão: " . $mysqli->connect_error);
-}
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$opt = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+$pdo = new PDO($dsn, $user, $pass, $opt);
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,34 +33,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefone = $_POST['telefone'];
 
     // Prepara a consulta SQL para atualizar os dados
-    $stmt = $mysqli->prepare("UPDATE users SET nome = ?, email = ?, data_nascimento = ?, genero = ?, telefone = ? WHERE cpf = ?");
-    $stmt->bind_param('sssssi', $nome, $email, $data_nascimento, $genero, $telefone, $cpf);
+    $stmt = $pdo->prepare("UPDATE users SET nome = ?, email = ?, data_nascimento = ?, genero = ?, telefone = ? WHERE cpf = ?");
+    $stmt->execute([$nome, $email, $data_nascimento, $genero, $telefone, $cpf]);
 
-    // Executa a consulta
-    // Após a atualização bem-sucedida
-if ($stmt->execute()) {
-    $_SESSION['mensagem'] = 'Cadastro efetivado com sucesso!';
+    // Verifica se a atualização foi bem-sucedida
+    if ($stmt->rowCount() > 0) {
+        $_SESSION['mensagem'] = 'Cadastro efetivado com sucesso!';
 
-    // Busca novamente os dados do usuário no banco de dados
-    $nova_consulta = $mysqli->prepare("SELECT nome, email, data_nascimento, genero, telefone FROM users WHERE cpf = ?");
-    $nova_consulta->bind_param('i', $cpf); // Supondo que $cpf seja a variável com o CPF do usuário
-    $nova_consulta->execute();
-    $nova_consulta->bind_result($novo_nome, $novo_email, $nova_data_nascimento, $novo_genero, $novo_telefone);
-    $nova_consulta->fetch();
+        // Busca novamente os dados do usuário no banco de dados
+        $nova_consulta = $pdo->prepare("SELECT nome, email, data_nascimento, genero, telefone FROM users WHERE cpf = ?");
+        $nova_consulta->execute([$cpf]);
+        $novo_usuario = $nova_consulta->fetch(PDO::FETCH_ASSOC);
 
-    // Agora você tem os dados atualizados em $novo_nome, $novo_email, etc.
-    // Redirecione para a página de perfil ou faça o que for necessário
-    header("Location: ../page/perfil.php");
-} else {
-    echo "Erro ao atualizar os dados: " . $stmt->error;
+        // Agora você tem os dados atualizados em $novo_usuario
+        // Redirecione para a página de perfil ou faça o que for necessário
+        header("Location: ../page/perfil.php");
+        exit;
+    } else {
+        echo "Erro ao atualizar os dados.";
+    }
 }
-
-$stmt->close();
-$nova_consulta->close();
-$mysqli->close();
-
-
-    $stmt->close();
-}
-$mysqli->close();
 ?>
+
