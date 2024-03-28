@@ -34,6 +34,7 @@
             transition: background-color 0.3s ease, color 1.5s ease;
             width: 150%;
             padding: 2%;
+            margin-bottom: 3px;
         }
         .form-group-perfil button:hover {
             color: white; /* Cor do texto quando o mouse passa por cima */

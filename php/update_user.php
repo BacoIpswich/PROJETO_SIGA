@@ -1,4 +1,5 @@
 <?php
+var_dump($_POST);
 session_start();
 
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {

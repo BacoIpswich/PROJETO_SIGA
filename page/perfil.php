@@ -126,9 +126,9 @@ $mysqli->close();
 
             <div class="col">
                 <div class="form-group-perfil" style="position: relative;left: 30vh;top: 1vh;" >
-                    <button type="button" id="editar-btn" >Editar</button><br><br>
-                    <button type="button" id="senha-btn"><a for="senha-btn" href="senha.php" style="color:#fff;text-decoration: none;">Trocar Senha</a></button><br><br>
-                    <button type="submit" id="salvar-btn"  disabled>Salvar</button><br><br>
+                    <button type="button" id="editar-btn" >Editar</button><br>
+                    <button type="button" id="senha-btn"><a for="senha-btn" href="senha.php" style="color:#fff;text-decoration: none;">Trocar Senha</a></button><br>
+                    <button type="submit" id="salvar-btn"  disabled>Salvar</button><br>
                     <button type="button" id="cancelar-btn"  disabled>Cancelar</button>
                     </div><!-- fim form-group-perfil btn--> 
             </div><!-- fim col 2-->
