@@ -55,7 +55,55 @@ $mysqli->close();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/style-perfil.css">
+    <style>
+    .grid-container{
+            display: flex;
+            gap: 20%;
+            max-width: 70%;
+        }
+        .formulario-perfil {
+            position: relative;
+            top: 35%;
+            left: 0;
+            width: max-content;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 1%;
+        }
+        .form-group-perfil input, select  {
+            width: 450px;
+            margin-top: 20px;
+            color: #1e7e34;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: x-large;
+            border: 1px solid #ccc;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        .form-group-perfil button {
+            background-color: #1e7e34;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            font-size: x-large;
+            transition: background-color 0.3s ease, color 1.5s ease;
+            width: 150%;
+            padding: 2%;
+            margin-bottom: 6px;
+        }
+        .form-group-perfil button:hover {
+            color: white; /* Cor do texto quando o mouse passa por cima */
+            background-color: darkgreen; /* Cor de fundo quando o mouse passa por cima */
+        }
+        button:disabled, input:disabled, select:disabled {
+            background-color: #cccccc88;
+            /* color: #ffffff; */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
