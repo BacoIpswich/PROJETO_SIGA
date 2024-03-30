@@ -14,7 +14,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <!-- Titulo -->
-    <title>SIGA | Gerenciamento</title>
+    <title>SIGA | Manuais</title>
 
     <!-- Inclua o seu arquivo CSS local aqui -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">

@@ -12,50 +12,50 @@ if (isset($_SESSION['mensagem'])) {
     unset($_SESSION['mensagem']); // Limpa a mensagem de sucesso da sessão
 }
 
-// Conexão com o banco de dados
-$host = 'localhost';
-$db   = 'login'; 
-$user = 'root'; 
-$pass = ''; 
-$charset = 'utf8mb4';
+// // Conexão com o banco de dados
+// $host = 'localhost';
+// $db   = 'login'; 
+// $user = 'root'; 
+// $pass = ''; 
+// $charset = 'utf8mb4';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$opt = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-$pdo = new PDO($dsn, $user, $pass, $opt);
+// $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+// $opt = [
+//     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+//     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//     PDO::ATTR_EMULATE_PREPARES   => false,
+// ];
+// $pdo = new PDO($dsn, $user, $pass, $opt);
 
-// Verifica se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém os dados do formulário
-    $cpf = $_POST['cpf'];
-    $senhaAtual = $_POST['senhaAtual'];
-    $novaSenha = $_POST['senha'];
+// // Verifica se o formulário foi enviado
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // Obtém os dados do formulário
+//     $cpf = $_POST['cpf'];
+//     $senhaAtual = $_POST['senhaAtual'];
+//     $novaSenha = $_POST['senha'];
 
-    // Busca a senha atual do usuário no banco de dados
-    $stmt = $pdo->prepare("SELECT senha FROM users WHERE cpf = ?");
-    $stmt->execute([$cpf]); // Supondo que $cpf seja a variável com o CPF do usuário
-    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+//     // Busca a senha atual do usuário no banco de dados
+//     $stmt = $pdo->prepare("SELECT senha FROM users WHERE cpf = ?");
+//     $stmt->execute([$cpf]); // Supondo que $cpf seja a variável com o CPF do usuário
+//     $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verifica se a senha atual está correta
-    if (password_verify($senhaAtual, $resultado['senha'])) {
-        // Senha atual correta, atualiza a senha no banco de dados
-        $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
-        $stmt = $pdo->prepare("UPDATE users SET senha = ? WHERE cpf = ?");
-        $stmt->execute([$novaSenhaHash, $cpf]);
-        if ($stmt->rowCount() > 0) {
-            $_SESSION['mensagem'] = 'Senha redefinida com sucesso!';
-            header("Location: ../page/perfil.php");
-            exit;
-        } else {
-            $_SESSION['mensagem'] =  "Erro ao atualizar a senha.";
-        }
-    } else {
-        $_SESSION['mensagem'] =  "Senha atual incorreta.";
-    }
-}
+//     // Verifica se a senha atual está correta
+//     if (password_verify($senhaAtual, $resultado['senha'])) {
+//         // Senha atual correta, atualiza a senha no banco de dados
+//         $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
+//         $stmt = $pdo->prepare("UPDATE users SET senha = ? WHERE cpf = ?");
+//         $stmt->execute([$novaSenhaHash, $cpf]);
+//         if ($stmt->rowCount() > 0) {
+//             $_SESSION['mensagem'] = 'Senha redefinida com sucesso!';
+//             header("Location: ../page/perfil.php");
+//             exit;
+//         } else {
+//             $_SESSION['mensagem'] =  "Erro ao atualizar a senha.";
+//         }
+//     } else {
+//         $_SESSION['mensagem'] =  "Senha atual incorreta.";
+//     }
+// }
 ?>
 
 
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SIGA | Perfil</title>
+    <title>SIGA | Configurações</title>
 
     <!-- Inclua o seu arquivo CSS local aqui -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
 <div class="formulario-perfil"> 
 
-            <form id="perfil-form" method="POST" action="">
+            <form id="perfil-form" method="POST" action="../php/update_senha.php">
                 <div class="form-group-perfil">
                 
                     <input type="hidden" id="cpf" name="cpf" value="<?php echo $usuario['cpf']; ?>" disabled>
