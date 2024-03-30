@@ -1,61 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-body {
+body 
+{
     font-family: 'Nunito', sans-serif;
     text-align: center;
     background-color: #1e7e34;
     color: #1e7e34;
 }
 
-.responsive-img {
+.responsive-img 
+{
     margin-top: 5px;
     width: 100%;
     height: auto;
 }
 
-.container {
+.container 
+{
     max-width: 80%;
     min-height: 95vh;
-    margin: 20px auto;
+    margin: 0px auto;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     background-color: #fff;
     overflow: auto;
 }
 
-.form-group {
+.form-group 
+{
     margin-bottom: 10px;
     padding: 0px 20px 0px 0px;
     border-radius: 5px;
     text-align: center;
-    }
+}
 
 
-.form-group input {
+.form-group input 
+{
     width: 20%;
     padding: 10px;
     margin-top: 5px;
     color: #1e7e34;
     text-align: center;
     font-size: x-large;
-    }
+}
 
 
-.form-group input[type="submit"] {
+.form-group input[type="submit"] 
+{
     background-color: #1e7e34;
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    }
+}
 
-.form-group input[type="submit"]:hover {
+.form-group input[type="submit"]:hover 
+{
     background-color: darkgreen;
     border-radius: 5px;
     text-align: center;
-    }
+}
 
-.menu-lateral {
+.menu-lateral 
+{
     position: relative;
     top: 30%;
     left: 0;
@@ -67,9 +75,10 @@ body {
     align-items: center;
     margin-bottom: 1%;
     flex: 1;
-    }
+}
     
-.menu-lateral button {
+.menu-lateral button 
+{
     margin-bottom: 1%;
     width: 300px;
     padding: 2%;
@@ -79,24 +88,28 @@ body {
     font-size: x-large;
     background-color: #1e7e34;
     transition: background-color 0.3s ease, color 1.5s ease;
-    border-radius: 5px;
-    }
+    border-radius: 5px; 
+}
     
-.menu-lateral button:hover {
+.menu-lateral button:hover 
+{
     background-color: darkgreen; /* Cor de fundo quando o mouse passa por cima */
-    }
+}
 
-.login { 
+.login 
+{ 
     margin: 0 !important;
     color: #1e7e34 !important;
-    }
+}
     
-    .regraVermelha {
-        color: red;
-        margin:0px;
-    }
+.regraVermelha 
+{
+    color: red;
+    margin:0px;
+}
     
-.regraVerde {
-        color: #1e7e34;
-        margin:0px;
-    }
+.regraVerde 
+{
+    color: #1e7e34;
+    margin:0px;
+}
