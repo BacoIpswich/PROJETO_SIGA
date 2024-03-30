@@ -41,6 +41,7 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
             $_SESSION['nome'] = $user['nome'];
             $_SESSION['cpf'] = $cpf;
             $_SESSION['email'] = $email;
+            $_SESSION['id'] = $user['id'];
 
             // Redireciona para a página do painel
             header('Location: ../page/painel.php');

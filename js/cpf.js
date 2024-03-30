@@ -8,7 +8,7 @@ function formatarCPF(el) {
 }
 
 function validarCPF(el) {
-    var strCPF = el.value.replace(/[.-]/g, ""); 
+    var strCPF = cpf.replace(/[.-]/g, ""); 
     var Soma;
     var Resto;
     Soma = 0;
